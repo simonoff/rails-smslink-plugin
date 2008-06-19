@@ -1,0 +1,34 @@
+SmsSender
+=========
+
+Simple interface to smslink client.
+
+TODO:
+	write tests
+	make available change settings via environment.rb
+	add new features for options to smslink daemon
+
+
+Example
+=======
+
+in the models:
+
+class Smssend < SmsSender::Sender
+  
+  def some_action(phone,message)
+    self.phone = '+3' + phone
+    self.server = 'sms_link_server'
+    self.queue = true
+    self.message = message
+    self.send
+  end
+end
+
+in the controller:
+
+smssender = Smssend.new
+smssender.some_action("80501234567","some text")
+
+
+Copyright (c) 2008 Alexander Simonov, released under the MIT license
